@@ -26,7 +26,7 @@ export const gameEnd=(uuid,payload)=>{
     }
 
     //각 스테이지의 지속 시간을 계산하여 총 점수 계산
-    let totalScore=0;
+    let totalScore=100;
     stages.forEach((stage,index)=>{
         let stageEndTime;
         if(index===stages.length-1){

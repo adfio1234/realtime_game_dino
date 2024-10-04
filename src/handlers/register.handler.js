@@ -6,7 +6,7 @@ const registerHandler = (io) => {
     io.on('connection', (socket) => {
         //이벤트 처리
 
-        const userUUID = '1234';
+        const userUUID = uuidv4();
         addUser({ uuid: userUUID, socketId: socket.id });
 
         handleConnection(socket, userUUID);
