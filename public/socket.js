@@ -8,7 +8,7 @@ const socket = io('http://localhost:3000', {
 
 let userId = null;//null로 초기화 하여 선언
 socket.on('response', (data) => {
-  console.log(data);
+  //console.log(data);
 });
 
 //
