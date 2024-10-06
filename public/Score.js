@@ -15,7 +15,6 @@ class Score {
   update(deltaTime) {
     
     this.score += deltaTime * 0.001*this.scoreMultiple;
-    console.log(this.scoreMultiple);
     // 점수가 100점 이상이 될 시 서버에 메세지 전송
     if (Math.floor(this.score) >= 1500 && this.stageChange[5]) {
       this.scoreMultiple=64;
