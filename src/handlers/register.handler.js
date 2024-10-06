@@ -8,7 +8,7 @@ const registerHandler = (io) => {
 
         const userUUID = uuidv4();
         addUser({ uuid: userUUID, socketId: socket.id });
-
+        
         handleConnection(socket, userUUID);
 
 

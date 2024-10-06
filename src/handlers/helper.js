@@ -46,7 +46,7 @@ export const handlerEvent = (io, socket, data) => {
         return;
     }
 
-    socket.emit('responnse', response);
+    socket.emit('response', response);
 }
 
 //스테이지에 따라서 더 높은 점수 획득
