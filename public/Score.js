@@ -1,6 +1,8 @@
+import {sendEvent} from './socket.js';
 class Score {
   score = 0;
   HIGH_SCORE_KEY = 'highScore';
+  stageChange=true;
 
   constructor(ctx, scaleRatio) {
     this.ctx = ctx;
@@ -16,7 +18,7 @@ class Score {
       sendEvent(11, { currentStage: 1000, targetStage: 1001 });
     }
   }
-
+  //item획득시 점수 추가 부분
   getItem(itemId) {
     this.score += 100;
   }
