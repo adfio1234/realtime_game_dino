@@ -5,7 +5,7 @@ import { getGameAssets } from "../init/assets.js";
 import { getStage, setStage } from '../models/stage.models.js'
 
 export const moveStageHandler = (userId, payload) => {
-    console.log(payload);
+    //console.log(payload);
     //유저의 현재 스테이지 정보
     let currentStages = getStage(userId);
     if (!currentStages.length) {
