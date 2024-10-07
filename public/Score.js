@@ -8,24 +8,26 @@ class Score {
   currentStage=1000;//현재 스테이지id\
   stageIndex=0;//스테이지별 이벤트통제를 위한 인덱스
 
-  constructor(ctx, scaleRatio,stageTable,itemTable,itemUnlockTable) {
+  constructor(ctx, scaleRatio,stageTable,itemTable,itemController) {
     this.ctx = ctx;
     this.canvas = ctx.canvas;
     this.scaleRatio = scaleRatio;
 
     this.stageTable=stageTable;
     this.itemTable=itemTable;
-    this.itemUnlockTable=itemUnlockTable;
+    this.itemController=itemController;
   }
  
 
   update(deltaTime) {
     this.score += deltaTime * 0.001*this.stageTable[this.stageIndex].scorePerSecond;
-   
     // 점수가 100점 이상이 될 시 서버에 메세지 전송
     if (Math.floor(this.score) >= this.stageTable[this.stageIndex].score && this.stageChange[this.stageIndex]) {
+      this.itemController.setStageIndex(this.stageIndex);
       this.stageChange[this.stageIndex++] = false;//index를 활용하여 이벤트를 false로만든다.  
+      
       sendEvent(11, { currentStage: this.currentStage, targetStage: this.currentStage+1 }); //currentStage+1을 하여 타겟 stage로 이동한다.
+      
       this.currentStage+=1;
       console.log(this.currentStage);
     }

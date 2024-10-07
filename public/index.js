@@ -38,10 +38,10 @@ const CACTI_CONFIG = [
 ];
 
 // 아이템
-
 const ITEM_CONFIG=itemData.data; 
 const STAGE_DATA=stageData.data;
 const ITEM_UNLOCK=itemUnlockData.data;
+
 // 게임 요소들
 let player = null;
 let ground = null;
@@ -102,9 +102,10 @@ function createSprites() {
     };
   });
 
-  itemController = new ItemController(ctx, itemImages, scaleRatio, GROUND_SPEED);
-
-  score = new Score(ctx, scaleRatio,STAGE_DATA,ITEM_CONFIG,ITEM_UNLOCK);
+  itemController = new ItemController(ctx, itemImages, scaleRatio, GROUND_SPEED,ITEM_UNLOCK);
+  
+  //stageData,itemData,itemConroller 추가;
+  score = new Score(ctx, scaleRatio,STAGE_DATA,ITEM_CONFIG,itemController);
 }
 
 function getScaleRatio() {

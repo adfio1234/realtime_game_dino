@@ -7,16 +7,23 @@ class ItemController {
 
     nextInterval = null;
     items = [];
+    stageIndex=0;//stage를 판별할 index추가
 
 
-    constructor(ctx, itemImages, scaleRatio, speed) {
+    constructor(ctx, itemImages, scaleRatio, speed,itemUnlockTable) {
         this.ctx = ctx;
         this.canvas = ctx.canvas;
         this.itemImages = itemImages;
         this.scaleRatio = scaleRatio;
         this.speed = speed;
 
+        this.itemUnlockTable=itemUnlockTable;
         this.setNextItemTime();
+    }
+
+    setStageIndex(stageId)//현재 stageIndex를 건내줄 함수 추가.
+    {
+        this.stageIndex=stageId;//현재 스테이지의 인덱스 추가
     }
 
     setNextItemTime() {
@@ -31,7 +38,7 @@ class ItemController {
     }
 
     createItem() {
-        const index = this.getRandomNumber(0, this.itemImages.length - 1);
+        const index = this.itemUnlockTable[this.stageIndex].item_id[this.getRandomNumber(0, this.itemUnlockTable[this.stageIndex].item_id.length-1)];
         const itemInfo = this.itemImages[index];
         const x = this.canvas.width * 1.5;
         const y = this.getRandomNumber(
