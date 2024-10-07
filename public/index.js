@@ -5,6 +5,9 @@ import Score from './Score.js';
 import ItemController from './ItemController.js';
 import {sendEvent} from './socket.js';
 import stageData from './assets/stage.json' with { type: 'json' };
+import itemData from './assets/item.json' with {type:'json'};
+import itemUnlockData from './assets/item_unlock.json' with {type:'json'};
+
 const canvas = document.getElementById('game');
 const ctx = canvas.getContext('2d');
 
@@ -35,17 +38,10 @@ const CACTI_CONFIG = [
 ];
 
 // 아이템
-const ITEM_CONFIG = [
-  { width: 50 / 1.5, height: 50 / 1.5, id: 1, image: 'images/items/item_coal.png' },
-  { width: 50 / 1.5, height: 50 / 1.5, id: 2, image: 'images/items/item_cooper.png' },
-  { width: 50 / 1.5, height: 50 / 1.5, id: 3, image: 'images/items/item_iron.png' },
-  { width: 50 / 1.5, height: 50 / 1.5, id: 4, image: 'images/items/item_gold.png' },
-  { width: 50 / 1.5, height: 50 / 1.5, id: 5, image: 'images/items/item_emerald.png' },
-  { width: 50 / 1.5, height: 50 / 1.5, id: 6, image: 'images/items/item_diamond.png' }
-];
 
+const ITEM_CONFIG=itemData.data; 
 const STAGE_DATA=stageData.data;
-
+const ITEM_UNLOCK=itemUnlockData.data;
 // 게임 요소들
 let player = null;
 let ground = null;
@@ -108,7 +104,7 @@ function createSprites() {
 
   itemController = new ItemController(ctx, itemImages, scaleRatio, GROUND_SPEED);
 
-  score = new Score(ctx, scaleRatio,STAGE_DATA);
+  score = new Score(ctx, scaleRatio,STAGE_DATA,ITEM_CONFIG,ITEM_UNLOCK);
 }
 
 function getScaleRatio() {

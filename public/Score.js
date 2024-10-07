@@ -8,12 +8,14 @@ class Score {
   currentStage=1000;//현재 스테이지id\
   stageIndex=0;//스테이지별 이벤트통제를 위한 인덱스
 
-  constructor(ctx, scaleRatio,stageTable) {
+  constructor(ctx, scaleRatio,stageTable,itemTable,itemUnlockTable) {
     this.ctx = ctx;
     this.canvas = ctx.canvas;
     this.scaleRatio = scaleRatio;
 
     this.stageTable=stageTable;
+    this.itemTable=itemTable;
+    this.itemUnlockTable=itemUnlockTable;
   }
  
 
@@ -30,7 +32,8 @@ class Score {
   }
   //item획득시 점수 추가 부분
   getItem(itemId) {
-    this.score += 100;
+    this.score+=this.itemTable[itemId-1].score; 
+    console.log(`Get Item you got ${this.itemTable[itemId-1].score}`);
   }
 
   reset() {
