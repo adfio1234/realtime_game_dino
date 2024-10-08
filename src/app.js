@@ -10,12 +10,10 @@ const PORT = 3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static('public'));
-//assets를 통해 정적 파일을 서빙
-app.use('/assets', express.static('assets'));
 
-app.get('/', (req, res) => {
-    res.send("Hello World");
-})
+// app.get('/', (req, res) => {
+//     res.send("Hello World");
+// })
 
 initSocket(server);
 
