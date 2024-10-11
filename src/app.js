@@ -9,12 +9,11 @@ const PORT = 3000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static('public'));
+app.use(express.static('public'));//서버에 정적 파일 서빙
 
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/public/index.html');
-});
-
+    res.send("Hello World");
+})
 
 initSocket(server);
 
