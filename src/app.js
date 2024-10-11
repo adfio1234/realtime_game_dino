@@ -12,14 +12,14 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
-    res.send("Hello World");
-})
+    res.sendFile(__dirname + '/public/index.html');
+});
+
 
 initSocket(server);
 
 server.listen(PORT, async () => {
     console.log(`Server is running on port ${PORT}`);
-
 
     //이곳에서 파일 읽음
     try {
